@@ -49,5 +49,7 @@ void MainWindow::onRoad1Clicked() {
 }
 
 void MainWindow::onRoad2Clicked() {
-
+    road.setWidth(8);
+    road.setLength(80);
+    QMessageBox::information(this, "Road2", QString("Road 2 properties:\nWidth: %1\nLength: %2").arg(road.width()).arg(road.length()));
 }
