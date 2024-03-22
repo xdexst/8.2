@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
     connect(ui->stopButton, &QPushButton::clicked, this, &MainWindow::onStopButtonClicked);
     connect(ui->pauseButton, &QPushButton::clicked, this, &MainWindow::onPauseButtonClicked);
+    connect(ui->road1Button, &QPushButton::clicked, this, &MainWindow::onRoad1Clicked);
+    connect(ui->road2Button, &QPushButton::clicked, this, &MainWindow::onRoad2Clicked);
 }
 
 MainWindow::~MainWindow()
@@ -32,3 +34,10 @@ void MainWindow::onPauseButtonClicked()
     QMessageBox::information(this, "Внимание", "Программа приостановлена");
 }
 
+void MainWindow::onRoad1Clicked() {
+
+}
+
+void MainWindow::onRoad2Clicked() {
+
+}

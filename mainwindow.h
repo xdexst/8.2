@@ -20,6 +20,8 @@ private slots:
     void onStartButtonClicked();
     void onStopButtonClicked();
     void onPauseButtonClicked();
+    void on_Road1_clicked();
+    void on_Road2_clicked();
 
 private:
     Ui::MainWindow *ui;
