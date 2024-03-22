@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    road.cpp \
     troad.cpp
 
 HEADERS += \
     mainwindow.h \
+    road.h \
     troad.h
 
 FORMS += \

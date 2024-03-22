@@ -1,28 +1,15 @@
-#ifndef TROAD_H
-#define TROAD_H
+#include "troad.h"
 
-#include "road.h"
+TRoad::TRoad(int length, int width, int lanes)
+    : length(length), width(width), lanes(lanes) {}
 
-class TRoad
-{
-public:
-    TRoad(int length = 0, int width = 0, int lanes = 0);
+int TRoad::getLength() const { return length; }
+void TRoad::setLength(int length) { this->length = length; }
 
-    int getLength() const;
-    void setLength(int length);
+int TRoad::getWidth() const { return width; }
+void TRoad::setWidth(int width) { this->width = width; }
 
-    int getWidth() const;
-    void setWidth(int width);
+int TRoad::getLanes() const { return lanes; }
+void TRoad::setLanes(int lanes) { this->lanes = lanes; }
 
-    int getLanes() const;
-    void setLanes(int lanes);
-
-    Road getRoad() const;
-
-private:
-    int length;
-    int width;
-    int lanes;
-};
-
-#endif // TROAD_H
+Road TRoad::getRoad() const { return Road(); } // Реализация временная, нужно изменить
