@@ -1,55 +1,55 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QWidget(parent)
 {
-    ui->setupUi(this);
+    // Создание дорог
+    road1 = TRoad();
+    road2 = TRoad();
 
-    // Подключаем сигнал clicked() кнопки pushButton к слоту onStartButtonClicked()
-    connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onStartButtonClicked);
-    connect(ui->stopButton, &QPushButton::clicked, this, &MainWindow::onStopButtonClicked);
-    connect(ui->pauseButton, &QPushButton::clicked, this, &MainWindow::onPauseButtonClicked);
-    connect(ui->road1Button, &QPushButton::clicked, this, &MainWindow::onRoad1Clicked);
-    connect(ui->road2Button, &QPushButton::clicked, this, &MainWindow::onRoad2Clicked);
+    // Создание компонентов
+    road1Button = new QPushButton("Road 1", this);
+    road2Button = new QPushButton("Road 2", this);
+    propertiesLineEdit = new QLineEdit(this);
+    currentPropertiesLabel = new QLabel("Current Properties: ", this);
 
-    lineEditWidth = new QLineEdit(this);
-        lineEditWidth->setPlaceholderText("Enter width...");
-        ui->verticalLayout->addWidget(lineEditWidth);
+    // Подключение сигналов к слотам
+    connect(road1Button, &QPushButton::clicked, this, &MainWindow::onRoad1Clicked);
+    connect(road2Button, &QPushButton::clicked, this, &MainWindow::onRoad2Clicked);
+    connect(propertiesLineEdit, &QLineEdit::editingFinished, this, &MainWindow::updateProperties);
 
-        lineEditLength = new QLineEdit(this);
-        lineEditLength->setPlaceholderText("Enter length...");
-        ui->verticalLayout->addWidget(lineEditLength);
+    // Создание вертикального слоя и добавление компонентов в него
+    QVBoxLayout *verticalLayout = new QVBoxLayout(this);
+    verticalLayout->addWidget(road1Button);
+    verticalLayout->addWidget(road2Button);
+    verticalLayout->addWidget(propertiesLineEdit);
+    verticalLayout->addWidget(currentPropertiesLabel);
+
+    // Установка вертикального слоя для главного окна
+    setLayout(verticalLayout);
 }
 
-MainWindow::~MainWindow()
+void MainWindow::onRoad1Clicked()
 {
-    delete ui;
+    // Присваивание новых свойств для дороги 1
+    road1.setWidth(10);
+    road1.setLength(50);
+    updateProperties();
 }
 
-void MainWindow::onStartButtonClicked()
+void MainWindow::onRoad2Clicked()
 {
-    qDebug() << "Start button clicked";
-    QMessageBox::information(this, "information", "Старт программы!");
-}
-void MainWindow::onStopButtonClicked()
-{
-    QMessageBox::information(this, "information", "Программа прекращена!");
-}
-void MainWindow::onPauseButtonClicked()
-{
-    QMessageBox::information(this, "Внимание", "Программа приостановлена");
+    // Присваивание новых свойств для дороги 2
+    road2.setWidth(20);
+    road2.setLength(100);
+    updateProperties();
 }
 
-void MainWindow::onRoad1Clicked() {
-    road.setWidth(10);
-    road.setLength(100);
-    QMessageBox::information(this, "Road1", QString("Road 1 properties:\nWidth: %1\nLength: %2").arg(road.width()).arg(road.length()));
-}
+void MainWindow::updateProperties()
+{
+    // Получение текста из поля ввода
+    QString propertiesText = propertiesLineEdit->text();
 
-void MainWindow::onRoad2Clicked() {
-    road.setWidth(8);
-    road.setLength(80);
-    QMessageBox::information(this, "Road2", QString("Road 2 properties:\nWidth: %1\nLength: %2").arg(road.width()).arg(road.length()));
+    // Вывод текста в метку
+    currentPropertiesLabel->setText("Current Properties: " + propertiesText);
 }

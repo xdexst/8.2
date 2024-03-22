@@ -1,12 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <QDebug>
-#include <QMainWindow>
-#include <QMessageBox>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+#include <QMainWindow>
+#include <QPushButton>
+#include <QLineEdit>
+
+#include "troad.h"
 
 class MainWindow : public QMainWindow
 {
@@ -17,16 +16,19 @@ public:
     ~MainWindow();
 
 private slots:
-    void onStartButtonClicked();
-    void onStopButtonClicked();
-    void onPauseButtonClicked();
-    void on_Road1_clicked();
-    void on_Road2_clicked();
+    void onRoad1ButtonClicked();
+    void onRoad2ButtonClicked();
+    void onUpdateRoad1Properties();
+    void onUpdateRoad2Properties();
 
 private:
-    Ui::MainWindow *ui;
-    QLineEdit *lineEditWidth;
-    QLineEdit *lineEditLength;
+    QPushButton *road1Button;
+    QPushButton *road2Button;
+    QLineEdit *road1PropertiesEdit;
+    QLineEdit *road2PropertiesEdit;
+
+    TRoad *road1;
+    TRoad *road2;
 };
 
 #endif // MAINWINDOW_H
