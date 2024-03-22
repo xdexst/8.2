@@ -25,6 +25,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QLineEdit *lineEditWidth;
+    QLineEdit *lineEditLength;
 };
 
 #endif // MAINWINDOW_H

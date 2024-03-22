@@ -13,6 +13,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pauseButton, &QPushButton::clicked, this, &MainWindow::onPauseButtonClicked);
     connect(ui->road1Button, &QPushButton::clicked, this, &MainWindow::onRoad1Clicked);
     connect(ui->road2Button, &QPushButton::clicked, this, &MainWindow::onRoad2Clicked);
+
+    lineEditWidth = new QLineEdit(this);
+        lineEditWidth->setPlaceholderText("Enter width...");
+        ui->verticalLayout->addWidget(lineEditWidth);
+
+        lineEditLength = new QLineEdit(this);
+        lineEditLength->setPlaceholderText("Enter length...");
+        ui->verticalLayout->addWidget(lineEditLength);
 }
 
 MainWindow::~MainWindow()
