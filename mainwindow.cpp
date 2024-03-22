@@ -43,7 +43,9 @@ void MainWindow::onPauseButtonClicked()
 }
 
 void MainWindow::onRoad1Clicked() {
-
+    road.setWidth(10);
+    road.setLength(100);
+    QMessageBox::information(this, "Road1", QString("Road 1 properties:\nWidth: %1\nLength: %2").arg(road.width()).arg(road.length()));
 }
 
 void MainWindow::onRoad2Clicked() {
