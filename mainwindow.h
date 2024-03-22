@@ -3,16 +3,16 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QVBoxLayout>
 #include <QLineEdit>
-
+#include <QLabel>
 #include "troad.h"
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -26,7 +26,7 @@ private:
     QPushButton *road2Button;
     QLineEdit *road1PropertiesEdit;
     QLineEdit *road2PropertiesEdit;
-
+    QLabel *currentPropertiesLabel;
     TRoad *road1;
     TRoad *road2;
 };

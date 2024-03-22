@@ -1,4 +1,5 @@
-#include "mainwindow.h"
+#include "widget.h"
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
